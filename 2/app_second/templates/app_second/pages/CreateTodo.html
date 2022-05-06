@@ -2,9 +2,55 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>CreateTodo</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-  Тут будет лежать форма создания TODO. - уникальная и красивая вёрстка
+    <div class="menu-form">
+      <div class="container">
+        <h4 class="write-block text-center py-3 mb-5">CreateTodo</h4>
+        <form class="needs-validation" novalidate>
+          <div class="form-row">
+            <div class="col-md-4 mb-3">
+              <label for="validationCustom01">Name</label>
+              <input type="text" class="form-control" id="validationCustom01" required>
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+            </div>
+            <div class="col-md-4 mb-3">
+              <label for="validationCustom02">Email</label>
+              <input type="text" class="form-control" id="validationCustom02" required>
+              <div class="valid-feedback">
+                Looks good!
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="col-md-8 mb-3">
+              <label for="validationCustom04">Task</label>
+              <select class="custom-select" id="validationCustom04" required>
+                <option selected disabled value="">Post my story</option>
+                <option>...</option>
+              </select>
+            </div>
+          </div>
+
+          <form class="was-validated">
+            <div class="mb-3 mr-2">
+              <label for="validationTextarea">Message:</label>
+              <textarea class="form-control" id="validationTextarea"></textarea>
+            </div>
+          <div class="form-row">
+            <div class="form-group">
+              <div class="form-check">
+                <button type="button" class="btn btn-outline-secondary">SEND</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
 </body>
 </html>
