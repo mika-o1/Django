@@ -9,25 +9,34 @@
 
 {% block main %}
 <main class="flex-shrink-0 bg-light">
-    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+    <div class="todolist-block py-5">
+      <div class="container">
+        <h3 class="heading-text text-center py-3 mb-5">TodoList</h3>
         {% for i in list %}
-            <div class="feature col">
-                {% if i.is_completed %}
-                    <div class="feature-icon bg-success bg-gradient">
-                        <svg class="bi" width="1em" height="1em"><use xlink:href="#collection"></use></svg>
-                    </div>
-                    <h2>{{i.title}}</h2>
-                    <a class="text-decoration-none text-primary" href="{% url 'todo_detail' i.link %}">подробнее</a>
-                {% else %}
-                    <div class="feature-icon bg-danger bg-gradient">
-                        <svg class="bi" width="1em" height="1em"><use xlink:href="#collection"></use></svg>
-                    </div>
-                    <h2>{{i.title}}</h2>
-                    <a class="text-decoration-none text-primary" href="{% url 'todo_detail' i.link %}">подробнее</a>
-                {% endif %}
+        <div class="row no-gutters justify-content-center">
+            {% if i.is_completed %}
+            <div class="card text-dark bg-success mb-3" style="max-width: 18rem;">
+              <div class="card-header text-white">Task </div>
+              <div class="card-body text-white">
+                <h5 class="card-title">{{i.title}}</h5>
+              </div>
+                <a class="text-decoration-none text-white m-3" href="{% url 'todo_detail' i.link %}">More</a>
             </div>
-        {% endfor %}
+            {% else %}
+            <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
+              <div class="card-header text-white">Task </div>
+              <div class="card-body text-white">
+                <h5 class="card-title">{{i.title}}</h5>
+              </div>
+                <a class="text-decoration-none text-white m-3" href="{% url 'todo_detail' i.link %}">More</a>
+            </div>
+            {% endif %}
+
+        </div>
+          {% endfor %}
+      </div>
     </div>
+
 </main>
 {% endblock main %}
 
