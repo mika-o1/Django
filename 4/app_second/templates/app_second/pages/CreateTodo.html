@@ -9,40 +9,49 @@
 {% endblock navbar %}
 
 {% block main %}
+
 <main class="flex-shrink-0 bg-light container">
-    <div class="d-flex text-center">
+  <div class="d-flex text-center">
+      <form
+          action="{% url 'todo_create' %}"
+          method="POST"
+          enctype="multipart/form-data"
+          target="_self"
+          class="form-control form-control-lg m-1 p-1"
+          style="width: 350px"
+      >
+      {% csrf_token %}
+          <div class="menu-form">
+            <div class="container">
+              <h4 class="write-block text-center py-2 mb-2">CreateTodo</h4>
+              <form class="needs-validation" novalidate>
 
-    <form
-        action="{% url 'todo_create' %}"
-        method="POST"
-        enctype="multipart/form-data"
-        target="_self"
-        class="form-control form-control-lg m-1 p-1"
-        style="width: 350px"
-    >
-        {% csrf_token %}
-        <h1 class="h3 mb-3 fw-normal">Создать новую задачу</h1>
+                <div class="form-floating p-1">
+                  <input type="text" class="form-control" id="floatingInput" placeholder="Enter name task" name="title">
+                  <label for="floatingInput">Enter a task name:</label>
+                </div>
+                <div class="form-floating p-1">
+                  <input type="text" class="form-control" id="floatingPassword" placeholder="Enter a task description:" name="description">
+                  <label for="floatingPassword">Enter a task description:</label>
+                </div>
+          
+                <div class="checkbox mb-3">
+                  <label>
+                    <input type="checkbox" value="remember-me"> Remember me
+                  </label>
+                </div>
+                <button class="w-100 btn btn-lg btn-primary m-1" type="submit">submit</button>
+                <button class="w-100 btn btn-lg btn-outline-danger m-1" type="reset">reset</button>
+                <p class="mt-5 mb-3 text-muted">© 2017–2021</p>
 
-        <div class="form-floating">
-          <input type="text" class="form-control" id="floatingInput" placeholder="введи название тут..." name="title">
-          <label for="floatingInput">Введите название задачи:</label>
-        </div>
-        <div class="form-floating">
-          <input type="text" class="form-control" id="floatingPassword" placeholder="Pasвведи описание тут...sword" name="description">
-          <label for="floatingPassword">Введите описание задачи:</label>
-        </div>
+              </form>   
+            </div>
+          </div>
+      </form>  
 
-        <div class="checkbox mb-3">
-          <label>
-            <input type="checkbox" value="remember-me"> Remember me
-          </label>
-        </div>
-        <button class="w-100 btn btn-lg btn-primary" type="submit">submit</button>
-        <button class="w-100 btn btn-lg btn-outline-danger" type="reset">reset</button>
-        <p class="mt-5 mb-3 text-muted">© 2017–2021</p>
-      </form>
-    </div>
+  </div>
 </main>
+
 {% endblock main %}
 
 
