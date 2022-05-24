@@ -1,0 +1,46 @@
+{% extends "app_student/components/base.html" %}
+{% load static %}
+
+{% block head %}{% endblock head %}
+
+{% block navbar %}
+    {% include 'app_student/components/navbar.html' %}
+{% endblock navbar %}
+
+{% block main %}
+<main class="flex-shrink-0 bg-light">
+    <div class="todolist-block py-5">
+      <div class="container">
+        <h3 class="heading-text text-center py-3 mb-5">TodoList</h3>
+        {% for i in list %}
+        <div class="row no-gutters justify-content-center">
+            {% if i.is_completed %}
+            <div class="card text-dark bg-success mb-3" style="max-width: 18rem;">
+              <div class="card-header text-white">Task </div>
+              <div class="card-body text-white">
+                <h5 class="card-title">{{i.title}}</h5>
+              </div>
+                <a class="text-decoration-none text-white m-3" href="">More</a>
+            </div>
+            {% else %}
+            <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
+              <div class="card-header text-white">Task </div>
+              <div class="card-body text-white">
+                <h5 class="card-title">{{i.title}}</h5>
+              </div>
+                <a class="text-decoration-none text-white m-3" href="">More</a>
+            </div>
+            {% endif %}
+
+        </div>
+          {% endfor %}
+      </div>
+    </div>
+
+</main>
+{% endblock main %}
+
+
+{% block footer %}
+  {% include 'app_student/components/footer.html' %}
+{% endblock footer %}

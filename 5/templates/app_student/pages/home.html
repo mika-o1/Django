@@ -1,0 +1,105 @@
+{% extends "app_student/components/base.html" %}
+{% load static %}
+
+
+{% block head %}{% endblock head %}
+
+
+{% block navbar %}
+    <div class="p-1 m-1">
+      {% include 'app_student/components/navbar.html' %}
+    </div>
+{% endblock navbar %}
+
+{% block main %}
+<main class="flex-shrink-0 bg-light">
+    <div class="container">
+    <div class="container-latest">
+      <h4 class="works-heading">
+        <i class="fas fa-mouse-pointer text-info mr-4"></i>Latest works
+        <hr>
+      </h4>
+      <div class="row justify-content-md-center">
+        <div class="col-md-3">
+          <div class="card text-center">
+            <img src="https://www.petmaniadubai.com/wp-content/uploads/2019/12/shih-tzu-2.jpeg" alt="nature"
+              class="img-thumbnail">
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="card text-center">
+            <img src="https://www.petmaniadubai.com/wp-content/uploads/2019/12/shih-tzu-2.jpeg" alt="nature"
+              class="img-thumbnail">
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="card text-center">
+            <img src="https://www.petmaniadubai.com/wp-content/uploads/2019/12/shih-tzu-1.jpeg" alt="nature"
+              class="img-thumbnail">
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div class="card text-center">
+            <img src="https://www.petmaniadubai.com/wp-content/uploads/2019/12/shih-tzu-1.jpeg" alt="nature"
+              class="img-thumbnail">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cards-menu">
+    <div class="container">
+      <div class="cards ">
+        <div class="row">
+          <div class="col-md-3">
+            <h5 class="card-title pen"><i class="fas fa-pen text-icon"></i>Clean theme</h5>
+            <div>
+              <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, iure!
+                velit dictum molestie. Duis porta gravida augua sed viverra. Quisque at nulla leo, non aliquet mi.</p>
+              <i class="fas fa-angle-right read-icon"></i><a href="#" class="text-info">Read More</a>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <h5 class="card-title expand"><i class="fas fa-expand text-icon"></i>Responsive design</h5>
+            <div>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Morbi euismod placerat dui et
+                tincidunt.
+                Sed sollicitudin posuere auctor. Phasellus at ultricies nisl.</p>
+              <i class="fas fa-angle-right read-icon"></i><a href="#" class="text-info">Read More</a>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <h5 class="card-title bars"><i class="fas fa-bars text-icon"></i>Fully layerd psd</h5>
+            <div>
+              <p class="card-text">Phasellus lobortis metus non augue sodales volutpat. Vestibulum sit amet
+                nibh eros, hendrerit venenatis est.Quisque at nulla leo, non aliquet mi.</p>
+              <i class="fas fa-angle-right read-icon"></i><a href="#" class="text-info">Read More</a>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <h5 class="card-title plane"><i class="fas fa-paper-plane text-icon"></i>Ready for coding</h5>
+            <div>
+              <p class="card-text">Vivamus convallis feugiat mauris sed posuere. Nam rutrum, quam quis
+                euismod commodo, elit est porta quam quis euismod commodoe.</p>
+              <i class="fas fa-angle-right read-icon"></i><a href="#" class="text-info">Read More</a>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+
+</main>
+{% endblock main %}
+
+
+{% block footer %}
+  {% include 'app_student/components/footer.html' %}
+{% endblock footer %}
