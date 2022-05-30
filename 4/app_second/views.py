@@ -29,7 +29,7 @@ def login(request):
     context = {
 
     }
-    return render(request, 'app_second/pages/login.html', context)
+    return render(request, 'app_second/pages/my_login.html', context)
 
 
 def about(request):

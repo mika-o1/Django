@@ -2,8 +2,13 @@
 {% load static %}
 
 
-{% block head %}{% endblock head %}
+{% block head %}
+    <link rel="icon" href="{% static 'img/logo512.png' %}" type="image/png">
+{% endblock head %}
 
+{% block title %}
+    Домашняя страница
+{% endblock title %}
 
 {% block navbar %}
     <div class="p-1 m-1">
