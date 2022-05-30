@@ -7,21 +7,21 @@
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
           <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
           <li><a href="#" class="nav-link px-2 text-white">About</a></li>
           <li>
-            <a class="text-decoration-none text-primary" href="{% url 'todo_list' %}">Список задач</a>
+            <a class="nav-link px-2 text-white" href="{% url 'todo_list' %}">Список задач</a>
           </li>
           <li>
-            <a class="text-decoration-none text-primary" href="{% url 'todo_create' %}">Создать задачу</a>
+            <a class="nav-link px-2 text-white" href="{% url 'todo_create' %}">Создать задачу</a>
           </li>
           <li>
-            <a class="text-decoration-none text-primary" href="http://localhost:8000/admin/">Админ</a>
+            <a class="nav-link px-2 text-white" href="http://localhost:8000/admin/">Админ</a>
           </li>
           <li>
-            <a class="text-decoration-none text-primary" href="{% url 'admin_page' %}">Админ page</a>
+            <a class="nav-link px-2 text-white" href="{% url 'admin_page' %}">Админ page</a>
+          </li>
+          <li>
+            <a class="nav-link px-2 text-white" href="{% url 'my_todo_list' %}">Student Page</a>
           </li>
         </ul>
 
