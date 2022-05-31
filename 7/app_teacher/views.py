@@ -140,4 +140,23 @@ def admin_page(request):
             )
     context = {
     }
+
+    # if request.method == "POST":
+    #     import openpyxl
+    #     excel = request.FILES.get("excel", None)
+
+    # names = [
+    #         ["mika", "robert", "alex"],
+    #         [1, 2, 3],
+    #         [4, 5, 6]
+    # ]
+    # wb = workbook()
+    # ws = wb.active
+    # for i in names:
+    #     for j in 1:
+    #         x = names.index(i) + 1
+    #         y = get_column_letter(i.index(j) + 1)
+    #         print(f"x = {x}, y = {y}", j)
+    #         ws[f"{y}{x}"] = j
+    # wb.save("sample.xlsx")
     return render(request, 'app_teacher/pages/AdminPage.html', context)
