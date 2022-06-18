@@ -1,10 +1,8 @@
-from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.core.paginator import Paginator
 from . import models
 from . import utils
-from django.conf import settings as my_settings
 
 
 # тут только "логика" - функции для обработки и возврат данных
@@ -34,17 +32,11 @@ from django.conf import settings as my_settings
 
 
 def index(request):
-    if my_settings.DEBUG:
-        context = {"name": "Ally", "age": 25}
-    else:
-        context = {"name": "Ally", "age": 22}
-
-    return HttpResponse()
+    return render(request, 'app_teacher/pages/index.html')
 
 
 def home(request):
-    # return render(request, 'app_teacher/pages/home.html')
-    return render(request, 'index2.html')
+    return render(request, 'app_teacher/pages/home.html')
 
 
 def about(request):
@@ -148,4 +140,23 @@ def admin_page(request):
             )
     context = {
     }
+
+    # if request.method == "POST":
+    #     import openpyxl
+    #     excel = request.FILES.get("excel", None)
+
+    # names = [
+    #         ["mika", "robert", "alex"],
+    #         [1, 2, 3],
+    #         [4, 5, 6]
+    # ]
+    # wb = workbook()
+    # ws = wb.active
+    # for i in names:
+    #     for j in 1:
+    #         x = names.index(i) + 1
+    #         y = get_column_letter(i.index(j) + 1)
+    #         print(f"x = {x}, y = {y}", j)
+    #         ws[f"{y}{x}"] = j
+    # wb.save("sample.xlsx")
     return render(request, 'app_teacher/pages/AdminPage.html', context)

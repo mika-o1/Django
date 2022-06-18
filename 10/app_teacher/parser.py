@@ -80,22 +80,22 @@ for i in vacancies:
 # синхронные операции - response = requests.get(url=url) # 2.5 * 10 + логика + 0.5 = 30
 # aсинхронные операции - response = await requests.get(url=url) # 2.5 * 1.1 + логика + 0.5 = 3
 
-from threading import Thread
-from multiprocessing import Process
-
-
-def increase(thread_name="Thread"):
-    index = 1
-    while True:
-        time.sleep(0.1)
-        index += 1
-        print(f"{thread_name} :{index}")
-
-
-for i in range(0, 100):
-    Thread(target=increase, args=(f"Thread {i}",)).start()
-
-print("123")
+# from threading import Thread
+# from multiprocessing import Process
+#
+#
+# def increase(thread_name="Thread"):
+#     index = 1
+#     while True:
+#         time.sleep(0.1)
+#         index += 1
+#         print(f"{thread_name} :{index}")
+#
+#
+# for i in range(0, 100):
+#     Thread(target=increase, args=(f"Thread {i}",)).start()
+#
+# print("123")
 
 # N поток выполнения
 # мультипоточная операции - response = await requests.get(url=url) GIL

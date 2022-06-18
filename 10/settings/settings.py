@@ -24,7 +24,6 @@ SECRET_KEY = 'django-insecure-p=vci)wm9ymra&72n%e$pb&sxh5kv%*1xbx*po#gr30s3#@hg*
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-HEROKU = True
 
 ALLOWED_HOSTS = ['*']  # 192.168.15.87
 
@@ -58,7 +57,7 @@ ROOT_URLCONF = 'settings.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates', BASE_DIR / 'dist'],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -121,24 +120,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-if DEBUG:
-    STATIC_URL = '/static/'
-    STATIC_ROOT = Path(BASE_DIR / 'static')
-    STATIC_DIR = Path(BASE_DIR / 'static')
-    STATICFILES_DIRS = [
-        Path(BASE_DIR / 'static_external'),
-        Path(BASE_DIR / 'dist'),
-        # Path(BASE_DIR / 'static'),
-    ]
-else:
-    STATIC_URL = '/static/'
-    STATIC_ROOT = Path(BASE_DIR / 'static')
-    STATIC_DIR = Path(BASE_DIR / 'static')
-    STATICFILES_DIRS = [
-        Path(BASE_DIR / 'static_external'),
-        Path(BASE_DIR / 'dist'),
-        # Path(BASE_DIR / 'static'),
-    ]
+STATIC_URL = '/static/'
+# STATIC_ROOT = Path(BASE_DIR / 'static')
+STATIC_DIR = Path(BASE_DIR / 'static')
+STATICFILES_DIRS = [
+    Path(BASE_DIR / 'static_external'),
+    Path(BASE_DIR / 'static'),
+]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = Path(BASE_DIR, 'static/media/')
