@@ -37,16 +37,16 @@ django-admin startproject settings .
 # создание Django-приложение с именем "app_second" в этой же директории
 django-admin startapp app_second
 
+# Создание суперпользователя
+# python manage.py createsuperuser
+python manage.py createsuperuser --username Bogdan --email bogdandrienko@gmail.com
+
+
 # создание миграций к базе данных
 python manage.py makemigrations
 
 # применение миграций к бд
 python manage.py migrate
-
-# Создание суперпользователя
-# python manage.py createsuperuser
-python manage.py createsuperuser --username Bogdan --email bogdandrienko@gmail.com
-
 
 
 # сбор статических файлов
