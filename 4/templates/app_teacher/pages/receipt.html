@@ -1,0 +1,149 @@
+{% extends "app_teacher/components/base.html" %}
+{% load static %}
+{% load extras %}
+
+{% block head %}
+    <link rel="icon" href="{% static 'img/logo512.png' %}" type="image/png">
+{% endblock head %}
+
+{% block title %}
+    Домашняя страница
+{% endblock title %}
+
+{% block navbar %}
+    <div class="p-1 m-1">
+      {% include 'app_teacher/components/navbar.html' %}
+    </div>
+{% endblock navbar %}
+
+{% block main %}
+<main class="flex-shrink-0 bg-light">
+<div class="album py-5 bg-light">
+    <div class="container">
+
+      <div class="row row-cols-2 row-cols-sm-2 row-cols-md-2 g-3 text-center d-flex justify-content-center">
+          <div class="col">
+            <div class="card shadow-sm text-center">
+
+              {% if request.user.username == receipt.author.username %}
+                   <div class="card-header lead">
+                        <a href="{% url 'receipt_delete' receipt.id %}" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
+
+                   </div>
+                {% endif %}
+
+               <div class="card-header lead">
+
+                    {% check_like receipt.id as liked %}
+                    {% if is_my_like %}
+                        <a href="{% url 'receipt_like_create' receipt.id %}" class="btn btn-outline-success"><i class="fa-solid fa-heart"></i></a>
+                    {% else %}
+                        <a href="{% url 'receipt_like_create' receipt.id %}" class="btn btn-outline-danger"><i class="fa-solid fa-heart"></i></a>
+                    {% endif %}
+              </div>
+
+
+
+                <span class="badge bg-primary rounded-pill m-1 p-1">{{receipt.return_clear_data}}</span>
+                <span class="badge bg-primary rounded-pill m-1 p-1">{{receipt.get_rating.total}}</span>
+                <span class="badge bg-success rounded-pill m-1 p-1">{{receipt.get_rating.like_count}}</span>
+                <span class="badge bg-danger rounded-pill m-1 p-1">{{receipt.get_rating.dislike_count}}</span>
+
+                {% for like in likes %}
+                    {% if like.is_liked %}
+                        <div class="text-success">{{like.receipt}}: {{like.user}}</div>
+                    {% else %}
+                        <div class="text-danger">{{like.receipt}}: {{like.user}}</div>
+                    {% endif %}
+                {% endfor %}
+
+               <div class="card-header lead">
+                {{ receipt.title }}
+              </div>
+
+              {% if receipt.image %}
+                <img src="{{ receipt.image.url }}" alt="img" class="image-fluid" style="height:400px;width:400px;">
+              {% else %}
+                <img src="{% static 'media/img/receipt/default/default_receipt.jpg' %}" alt="img">
+              {% endif %}
+
+
+              <div class="card-body">
+                <p class="card-text">{{ receipt.description }}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <a href="{% url 'receipt' receipt.id %}" class="btn btn-sm btn-outline-primary">
+                        детали
+                      </a>
+                    {% if receipt.instructions %}
+                      <a href="{{ receipt.instructions.url }}" class="text-decoration-none btn btn-sm btn-outline-warning">
+                        инструкция
+                      </a>
+                    {% endif %}
+
+                  </div>
+                  <small class="text-muted">{% time_convert receipt.time_to_cook 85 %}</small>
+                </div>
+              </div>
+            </div>
+
+        <div class="d-flex text-center">
+            <form
+                action="{% url 'receipt_comment_create' receipt.id %}"
+                method="POST"
+                enctype="multipart/form-data"
+                target="_self"
+                class="card p-2"
+            >
+              {% csrf_token %}
+
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="текст комментария" name="comment_text">
+                <button type="submit" class="btn btn-secondary">отправить</button>
+              </div>
+            </form>
+        </div>
+
+
+      <div class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white" style="width: 380px;">
+          <a href="/" class="d-flex align-items-center flex-shrink-0 p-3 link-dark text-decoration-none border-bottom">
+            <svg class="bi me-2" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
+            <span class="fs-5 fw-semibold">Комментарии ({{comments.count}})</span>
+          </a>
+          <div class="list-group list-group-flush border-bottom scrollarea">
+
+
+            {% for comment in comments %}
+
+            <a href="#" class="list-group-item list-group-item-action py-3 lh-tight">
+              <div class="d-flex w-100 align-items-center justify-content-between">
+
+                  {% if request.user.is_superuser %}
+                    <a href="{% url 'receipt_comment_delete' comment.id %}" class="btn btn-outline-danger"><i class="fa-solid fa-trash"></i></a>
+                  {% endif %}
+
+                  {% if comment.user.is_superuser %}
+                    <strong class="mb-1 text-danger">{{comment.user.username}}</strong>
+                  {% else %}
+                    <strong class="mb-1 text-primary">{{comment.user.username}}</strong>
+                  {% endif %}
+                <strong class="mb-1">{{comment.time}}</strong>
+              </div>
+              <div class="col-10 mb-1 small">{{ comment.comment_text }}</div>
+            </a>
+
+            {% endfor %}
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock main %}
+
+
+{% block footer %}
+  {% include 'app_teacher/components/footer.html' %}
+{% endblock footer %}
